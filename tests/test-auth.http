@@ -1,0 +1,55 @@
+
+GET http://localhost:3000/health
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "SecurePass123!",
+  "name": "John Doe"
+}
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "invalid-email",
+  "password": "SecurePass123!",
+  "name": "John Doe"
+}
+
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "email": "jane@example.com",
+  "password": "weak",
+  "name": "Jane Doe"
+}
+
+
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "SecurePass123!"
+}
+
+
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "WrongPassword"
+}
+
+
+GET http://localhost:3000/api/auth/me
+Authorization: Bearer YOUR_TOKEN_HERE
+
+
+GET http://localhost:3000/api/auth/me

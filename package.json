@@ -1,0 +1,60 @@
+{
+  "name": "polling-system-backend",
+  "version": "1.0.0",
+  "description": "Real-time polling platform backend with PostgreSQL, Redis, and Express",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "db:test": "node src/db/test-connection.js",
+    "test:infra": "node src/config/test-infrastructure.js",
+    "docker:dev:up": "docker-compose -f docker-compose.dev.yml up -d",
+    "docker:dev:down": "docker-compose -f docker-compose.dev.yml down",
+    "docker:dev:logs": "docker-compose -f docker-compose.dev.yml logs -f",
+    "docker:dev:restart": "docker-compose -f docker-compose.dev.yml restart",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "worker": "node src/workers/voteProcessor.worker.js",
+    "setup": "npm run docker:dev:up && echo 'Waiting for databases...' && sleep 5 && npm run db:push && echo 'Setup complete!'"
+  },
+  "keywords": [
+    "polling",
+    "real-time",
+    "voting",
+    "postgresql",
+    "redis",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.33.0",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "nanoid": "^5.0.7",
+    "pg": "^8.12.0",
+    "redis": "^4.7.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.24.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
