@@ -49,3 +49,5 @@ router.get(
   authenticate,
   resultController.getConnectionStats
 );
+
+export default router;
